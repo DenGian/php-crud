@@ -10,7 +10,7 @@ class DatabaseLoader
     private PDO $conn;
 
     public function __construct(){
-        $dotenv = Dotenv\Dotenv::createImmutable(dirname(__DIR__), ".env");
+        $dotenv = Dotenv\Dotenv::createImmutable((dirname(__DIR__,1)), ".env");
         $dotenv->load();
         $this->dbhost = $_ENV['DATABASE_HOST'];
         $this->dbname = $_ENV['DATABASE_NAME'];
