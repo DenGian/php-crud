@@ -1,8 +1,9 @@
 <?php
 declare(strict_types=1);
-
+require_once "vendor/autoload.php";
 //include all your model files here
 require 'Model/User.php';
+require 'Model/DatabaseLoader.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
