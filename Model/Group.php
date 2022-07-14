@@ -6,14 +6,14 @@ class group
     private int $id;
     private string $name;
     private string $location;
-    private int $groupId;
+    private int $groupCoachId;
 
-    public function __construct(int $id,string $name, string $location,int $groupId)
+    public function __construct(int $id,string $name,int $groupCoachId,string $location)
     {
         $this->id = $id;
         $this->name = $name;
         $this->location = $location;
-        $this->groupId = $groupId;
+        $this->groupCoachId = $groupCoachId;
     }
 
 
@@ -35,9 +35,9 @@ class group
     }
 
 
-    public function getGroupId(): int
+    public function getGroupCoachId(): int
     {
-        return $this->groupId;
+        return $this->groupCoachId;
     }
 
 
