@@ -12,7 +12,7 @@ class GroupController
     }
     public function render(array $GET, array $POST):void
     {
-        $DBLoader = new DatabaseLoader();
+      
         $sqlGroupTable = $this->DBLoader->getConnection()->query("SELECT * FROM `groups`");
         $groupArray = [];
         while ($row = $sqlGroupTable->fetch()) {
