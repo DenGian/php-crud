@@ -1,5 +1,3 @@
-
-
 <?php require 'includes/header.php'; ?>
 
 <?php
