@@ -16,12 +16,12 @@ require 'Controller/StudentPageController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
-
+$dbloader = new DatabaseLoader();
 $controller = new HomepageController();
 if(isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new InfoController();
 }elseif(isset($_GET['page']) && $_GET['page'] === 'student') {
-    $controller = new StudentPageController();
+    $controller = new StudentPageController($dbloader);
 }elseif(isset($_GET['page']) && $_GET['page'] === 'coach') {
     $controller = new TeacherController();
 }elseif(isset($_GET['page']) && $_GET['page'] === 'groups') {
