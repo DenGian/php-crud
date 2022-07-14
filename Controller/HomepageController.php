@@ -9,6 +9,7 @@ class HomepageController
         //this is just example code, you can remove the line below
         $user = new User('John Smith');
 
+        $DBLoader = new DatabaseLoader();
         // you should not echo anything inside your controller - only assign vars here
         
         // Models will be responsible for getting the data, for example if you want to get some students from a database:
