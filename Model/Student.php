@@ -6,10 +6,11 @@ class Student extends Teacher{
     private int $group_id;
     private DatabaseLoader $DBLoader;
 
-    public function __construct(int $group_id){
+    public function __construct(int $id, string $name, string $email, int $group_id){
+        parent::__construct($id, $name, $email);
         $this->group_id = $group_id;
         $this->DBLoader = new DatabaseLoader();
-        parent::__construct($id, $name, $email);
+       
     }
 
     public function getId(): int {
