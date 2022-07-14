@@ -5,7 +5,7 @@ class TeacherController
 {
     private DatabaseLoader $DBLoader;
 
-    public function __construct()
+    public function __construct($DBLoader)
     {
         $this->DBLoader= new DatabaseLoader();
     }
