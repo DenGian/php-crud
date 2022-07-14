@@ -6,12 +6,12 @@ require 'Model/User.php';
 require 'Model/DatabaseLoader.php';
 #require 'Model/Student.php';
 #require 'Model/Group.php';
-#require 'Model/Teacher.php';
+require 'Model/Teacher.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
 #require 'Controller/StudentPageController.php';
-#require 'Controller/TeacherController.php';
+require 'Controller/TeacherController.php';
 #require 'Controller/GroupController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
