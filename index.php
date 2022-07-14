@@ -14,6 +14,12 @@ require 'Controller/InfoController.php';
 $controller = new HomepageController();
 if(isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new InfoController();
+}elseif(isset($_GET['page']) && $_GET['page'] === 'students') {
+    $controller = new StudentsController();
+}elseif(isset($_GET['page']) && $_GET['page'] === 'coach') {
+    $controller = new TeacherController();
+}elseif(isset($_GET['page']) && $_GET['page'] === 'groups') {
+    $controller = new GroupController();
 }
 
 
