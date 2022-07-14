@@ -25,6 +25,6 @@ class Teacher
     }
     public function getEmail(): string
     {
-        return $this->name;
+        return $this->email;
     }
 }
