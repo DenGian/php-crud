@@ -1,2 +1,18 @@
+
+
+<?php require 'includes/header.php'; ?>
+
 <?php
-declare(strict_types= 1);
+
+foreach ($teacherArray as $teacher){
+    $teacherId=$teacher->getId();
+    $teacherName=$teacher->getName();
+    $teacherEmail=$teacher->getEmail();
+    var_dump($teacher);
+}
+?>
+
+
+
+
+<?php require 'includes/footer.php'; ?>
