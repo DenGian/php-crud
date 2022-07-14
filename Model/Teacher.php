@@ -7,7 +7,11 @@ class Teacher
     private string $name;
     private string $email;
 
+<<<<<<< HEAD
     public function __construct(int $id, string $name, string $email)
+=======
+    public function __construct(int $id, $name, string $email)
+>>>>>>> production
     {
         $this->id=$id;
         $this->name=$name;
