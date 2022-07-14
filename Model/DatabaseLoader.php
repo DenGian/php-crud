@@ -50,9 +50,11 @@ class DatabaseLoader
 
 
 
-    public function getStudentById()
+    public function getStudentById($inputId)
     {
-
+        $sqlRequestedStudentId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
+        $requestedStudentId[]= $sqlRequestedStudentId->fetch();
+        return $requestedStudentId;
     }
 
 
