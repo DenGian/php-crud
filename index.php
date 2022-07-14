@@ -4,13 +4,13 @@ require_once "vendor/autoload.php";
 //include all your model files here
 require 'Model/User.php';
 require 'Model/DatabaseLoader.php';
-#require 'Model/Student.php';
+require 'Model/Student.php';
 #require 'Model/Group.php';
 #require 'Model/Teacher.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
-#require 'Controller/StudentPageController.php';
+require 'Controller/StudentPageController.php';
 #require 'Controller/TeacherController.php';
 #require 'Controller/GroupController.php';
 
