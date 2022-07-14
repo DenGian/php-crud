@@ -59,28 +59,40 @@ class DatabaseLoader
 
     public function getAllTeachers()
     {
-
+        $sqlGetAllTeachers=$this->getConnection()->query('SELECT * FROM Coaches');
+        $teacherArray=[];
+        while ($row = $sqlGetAllTeachers->fetch()){
+            $teacherArray[] = new Teacher($row[0], $row[1], $row[2]);
+        }
+        return $teacherArray;
     }
 
 
 
-    public function getTeacherById()
+    public function getTeacherById($inputId)
     {
-
-    }
-
-
+        $sqlRequestedTeacherId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
+        $requestedTeacherId[]= $sqlRequestedTeacherId->fetch();
+        return $requestedTeacherId;
+        }
 
     public function getAllGroups()
     {
-
+        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups');
+        $groupArray=[];
+        while ($row = $sqlGetAllGroups->fetch()){
+            $groupArray[]= new Group ($row[0], $row[1], $row[2], $row[3]);
+        }
+        return $groupArray;
     }
 
 
 
-    public function getGroupById()
+    public function getGroupById($inputId)
     {
-
+        $sqlRequestGroupId=$this->getConnection()->query('SELECT * FROM Groups WHERE ID =' .$inputId);
+        $requestedGroupId[]=$sqlRequestGroupId->fetch();
+        return $requestedGroupId;
     }
 
 }
