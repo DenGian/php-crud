@@ -9,17 +9,25 @@
     </tr>
     <?php
     foreach ($groupArray as $group) {
-        $groupName = ucfirst($group->getName());
-        $groupId = $group->getId();
-        $groupLocation = $group->getLocation();
+        $groupName = ucfirst($group->getGroupName());
+        $groupId = $group->getGroupId();
+        $groupLocation = $group->getGroupLocation();
         $groupCoachId = $group->getGroupCoachId();
+        foreach ($coachArray as $coach){
+            $teacherName = ucfirst($coach->getName());
+        }
 
-        echo '<tr>';
-        echo '<td>' . $groupId;
-        echo '<td>' . $groupName;
-        echo '<td>' . $groupLocation;
-        echo '<td>' . $groupCoachId;
-        echo '</tr>';
+
+
+        echo '<tr>'.
+            '<td>' . $groupId . '</td>'.
+            '<td>' . $groupName . '</td>'.
+            '<td>' . $groupLocation . '</td>'.
+//            '<td>' . $groupCoachId . '</td>'.
+            '<td>' . $teacherName . '</td>'.
+                '</tr>';
+
+
     }
     ?>
 </table>
