@@ -6,6 +6,15 @@ foreach ($groupArray as $group) {
     $groupLocation = $group->getLocation();
     $groupCoachId = $group->getGroupCoachId();
     var_dump($group);
+    echo "<br>";
+    var_dump($groupId);
+    echo "<br>";
+    var_dump($groupName);
+    echo "<br>";
+    var_dump($groupLocation);
+    echo "<br>";
+    var_dump($groupCoachId);
+    echo "<br>";
 }
 ?>
 <?php require 'includes/footer.php'?>
