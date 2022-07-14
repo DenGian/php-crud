@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 class teacher
 {
+    private int $id;
     private string $name;
     private string $email;
 
@@ -10,6 +11,11 @@ class teacher
     {
         $this->name=$name;
         $this->email=$email;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function getName(): string
