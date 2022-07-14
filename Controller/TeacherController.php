@@ -3,7 +3,7 @@ declare(strict_types = 1);
 
 class TeacherController
 {
-    private databaseLoader $databaseLoader;
+    private DatabaseLoader $databaseLoader;
 
     public function __construct(databaseLoader $databaseLoader)
     {
