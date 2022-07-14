@@ -3,16 +3,17 @@ declare(strict_types=1);
 
 class GroupController
 {
-    private database $databaseLoader;
+    private DatabaseLoader $DBLoader;
 
     public function __construct()
     {
-        $this->databaseLoader = $databaseLoader;
-    }
+       $this->DBLoader = new DatabaseLoader();
 
-    public function render(array $GET, array$POST)
+    }
+    public function render(array $GET, array $POST):void
     {
-        $sqlGroupTable = $this->databaseLoader->getConnection()->query("SELECT * FROM groups");
+        $DBLoader = new DatabaseLoader();
+        $sqlGroupTable = $this->DBLoader->getConnection()->query("SELECT * FROM `groups`");
         $groupArray = [];
         while ($row = $sqlGroupTable->fetch()) {
             $groupArray[] = new group($row[0], $row[1], $row[2], $row[3]);
