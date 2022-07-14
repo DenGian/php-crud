@@ -37,9 +37,50 @@ class DatabaseLoader
         }
     }
 
-    public function getConn():PDO
+
+    public function getAllStudents()
     {
-        return $this->conn;
+        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS");
+        $studentsArray=[];
+        while ($row = $sqlAllStudents->fetch()){
+            $studentsArray[] = new Student($row[0],$row[1],$row[2],$row[3]);
+        }
+        return $studentsArray;
+    }
+
+
+
+    public function getStudentById()
+    {
+
+    }
+
+
+
+    public function getAllTeachers()
+    {
+
+    }
+
+
+
+    public function getTeacherById()
+    {
+
+    }
+
+
+
+    public function getAllGroups()
+    {
+
+    }
+
+
+
+    public function getGroupById()
+    {
+
     }
 
 }
