@@ -3,8 +3,9 @@
 foreach ($groupArray as $group) {
     $groupName = ucfirst($group->getName());
     $groupId = $group->getId();
-    var_dump($groupId);
-    var_dump($groupName);
+    $groupLocation = $group->getLocation();
+    $groupCoachId = $group->getGroupCoachId();
+    var_dump($group);
 }
 ?>
 <?php require 'includes/footer.php'?>
