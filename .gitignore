@@ -111,3 +111,5 @@ vendor
 
 !.env.sample
 .env
+
+composer.lock
