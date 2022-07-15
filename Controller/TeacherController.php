@@ -16,6 +16,10 @@ class TeacherController
         while($row=$sqlTeacherTable->fetch()){
             $teacherArray[]=new Teacher($row[0], $row[1], $row[2]);
         }
+        if(isset($POST['delete'])){
+            $this->DBLoader->deleteTeacher($POST['delete']);
+            header('location:index.php?page='.$GET['page']);
+        }
         require 'View/teacher.php';
     }
 }
