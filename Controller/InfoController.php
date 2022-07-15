@@ -11,11 +11,13 @@ class InfoController
         // then the view will actually display them.
 
         //load the view
-        if (isset($GET['student'])) {
+        if (isset($GET['student'])) { //brian
             $studentID = $GET['student'];
             echo $studentID;
             require 'View/info.php';
-        } elseif (isset($GET['group'])) {
+        } elseif (isset($GET['teacher'])) { //ian
+            require 'View/info.php';
+        } elseif (isset($GET['group'])) { //glian
             require 'View/groupinfopage.php';
         }
     }
