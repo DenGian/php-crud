@@ -14,8 +14,10 @@ class GroupController
     {
         $groupArray =  $this->DBLoader->getAllGroups();
 
-
-
+        //delete function
+        if(isset($POST['delete'])){
+            $this->DBLoader->deleteGroup($POST['delete']);
+        }
 
         require 'view/group_page.php';
     }
