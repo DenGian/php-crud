@@ -97,9 +97,24 @@ class DatabaseLoader
         return $requestedGroupId;
     }
 
-    public function deleteEntry()
+    public function deleteGroup($deleteID):void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM * WHERE ID=' . $POST[])
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Groups WHERE ID=' . $deleteID);
+
+    }
+
+
+    public function deleteStudent($deleteID):void
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Students WHERE ID=' . $deleteID);
+
+    }
+
+
+    public function deleteTeacher($deleteID):void
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Coaches WHERE ID=' . $deleteID);
+
     }
 
     public function createNewEntry()
