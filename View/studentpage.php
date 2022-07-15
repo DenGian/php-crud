@@ -14,22 +14,22 @@
             <td><?= $student->getID(); ?></td>
             <td>
                <a href=<?php echo "index.php?page=info&student=" . $student->getId(); ?>><?= $student->getName() ?></a>
-               <button style='background-color:orange; color:white; border-color:orange;' name='nameEdit'>edit</button>
-               <?php if (isset($POST['nameEdit'])) : ?>
-                  <input type="text" name="newName">
-                  <button style='background-color:green; color:white; border-color:green;' name="newNameConfirm">confirm</button>
-               <?php endif; ?>
             </td>
             <td>
                <?= $student->getEmail(); ?>
-               <button style='background-color:orange; color:white; border-color:orange;' name='emailEdit'>edit</button>
-               <?php if (isset($POST['emailEdit'])) : ?>
-                  <input type="text" name="newEmail">
-                  <button style='background-color:green; color:white; border-color:green;' name="newEmailConfirm">confirm</button>
-               <?php endif; ?>
             </td>
-
+            <td>
+               <button style="background-color:orange;color:white;border-color:orange;">
+                  <a href="index.php?page=editstudentspage&student=<?= $student->getId() ?>">edit</a>
+               </button>
+            </td>
+            <td>
+               <button style="background-color:red;color:white;border-color:red;" name="deleteStudent" value="<?= $student->getId(); ?>">
+                  delete
+               </button>
+            </td>
          </tr>
+
 
       <?php endforeach; ?>
    </table>
