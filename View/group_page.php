@@ -8,8 +8,7 @@
         <th>Teacher</th>
     </tr>
     <?php
-
-
+    //loop through array returned from the getAllGroups function called in controller
     foreach ($groupArray as $group) {
         $groupName = ucfirst($group->getGroupName());
         $groupId = $group->getGroupId();
@@ -17,7 +16,7 @@
         $groupCoachId = $group->getGroupCoachId();
         $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
         $teacherName = $teacherNames['name'];
-
+    //use the loop to create a table on screen having all information aswell as a delete button for each entry
         echo '<tr>'.
             '<td>' . $groupId . '</td>'.
             '<td>' . $groupName . '</td>'.
@@ -25,7 +24,7 @@
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="Delete">Delete</button></form></td>'.
                 '</tr>';
-        
+
     }
     ?>
 </table>
