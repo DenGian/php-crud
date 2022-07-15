@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 require_once "vendor/autoload.php";
 //include all your model files here
@@ -11,6 +12,7 @@ require 'Model/Student.php';
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
 require 'Controller/StudentPageController.php';
+require 'Controller/EditStudentPage.php';
 #require 'Controller/TeacherController.php';
 #require 'Controller/GroupController.php';
 
@@ -18,14 +20,16 @@ require 'Controller/StudentPageController.php';
 //this file should never be more than 20 lines of code!
 $dbloader = new DatabaseLoader();
 $controller = new HomepageController();
-if(isset($_GET['page']) && $_GET['page'] === 'info') {
+if (isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new InfoController();
-}elseif(isset($_GET['page']) && $_GET['page'] === 'student') {
+} elseif (isset($_GET['page']) && $_GET['page'] === 'student') {
     $controller = new StudentPageController($dbloader);
-}elseif(isset($_GET['page']) && $_GET['page'] === 'coach') {
+} elseif (isset($_GET['page']) && $_GET['page'] === 'coach') {
     $controller = new TeacherController();
-}elseif(isset($_GET['page']) && $_GET['page'] === 'groups') {
+} elseif (isset($_GET['page']) && $_GET['page'] === 'groups') {
     $controller = new GroupController();
+} elseif (isset($_GET['page']) && $_GET['page'] === "editstudentspage") {
+    $controller = new EditStudentPage($dbloader);
 }
 
 
