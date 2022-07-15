@@ -103,7 +103,7 @@ class DatabaseLoader
 
     public function deleteStudent($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Students WHERE ID=' . $deleteID);
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Students WHERE ID=' . $deleteID);
     }
 
 
