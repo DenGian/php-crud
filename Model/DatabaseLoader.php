@@ -35,8 +35,72 @@ class DatabaseLoader
         }
     }
 
-    public function getConn(): PDO
+
+    public function getAllStudents()
     {
-        return $this->conn;
+        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS");
+        $studentsArray = [];
+        while ($row = $sqlAllStudents->fetch()) {
+            $studentsArray[] = new Student($row[0], $row[1], $row[2], $row[3]);
+        }
+        return $studentsArray;
+    }
+
+
+
+    public function getStudentById($inputId)
+    {
+        $sqlRequestedStudentId = $this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' . $inputId);
+        $requestedStudentId[] = $sqlRequestedStudentId->fetch();
+        return $requestedStudentId;
+    }
+
+
+
+    public function getAllTeachers()
+    {
+        $sqlGetAllTeachers = $this->getConnection()->query('SELECT * FROM Coaches');
+        $teacherArray = [];
+        while ($row = $sqlGetAllTeachers->fetch()) {
+            $teacherArray[] = new Teacher($row[0], $row[1], $row[2]);
+        }
+        return $teacherArray;
+    }
+
+
+
+    public function getTeacherById($inputId)
+    {
+        $sqlRequestedTeacherId = $this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' . $inputId);
+        $requestedTeacherId[] = $sqlRequestedTeacherId->fetch();
+        return $requestedTeacherId;
+    }
+
+    public function getAllGroups()
+    {
+        $sqlGetAllGroups = $this->getConnection()->query('SELECT * FROM Groups');
+        $groupArray = [];
+        while ($row = $sqlGetAllGroups->fetch()) {
+            $groupArray[] = new Group($row[0], $row[1], $row[2], $row[3]);
+        }
+        return $groupArray;
+    }
+
+
+
+    public function getGroupById($inputId)
+    {
+        $sqlRequestGroupId = $this->getConnection()->query('SELECT * FROM Groups WHERE ID =' . $inputId);
+        $requestedGroupId[] = $sqlRequestGroupId->fetch();
+        return $requestedGroupId;
+    }
+
+    public function deleteEntry($deleteId)
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM * WHERE ID=' . $deleteId);
+    }
+
+    public function createNewEntry()
+    {
     }
 }
