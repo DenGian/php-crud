@@ -97,4 +97,14 @@ class DatabaseLoader
         return $requestedGroupId;
     }
 
+    public function deleteEntry()
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM * WHERE ID=' . $POST[])
+    }
+
+    public function createNewEntry()
+    {
+
+    }
+
 }
