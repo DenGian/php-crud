@@ -20,6 +20,9 @@ class TeacherController
             $this->DBLoader->deleteTeacher($POST['delete']);
             header('location:index.php?page='.$GET['page']);
         }
+        if(isset($POST['student'])){
+            $requestedStudents = $this->DBLoader->getStudentByCoach($POST['student']);
+        }
         require 'View/teacher.php';
     }
 }
