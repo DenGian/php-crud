@@ -24,6 +24,7 @@
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="edit">Edit</button></form></td>'.
                 '</tr>';
 
     }
