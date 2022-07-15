@@ -49,10 +49,19 @@ class DatabaseLoader
         return $studentsArray;
     }
 
+<<<<<<< HEAD
     public function getStudentById($inputId)
     {
         $sqlRequestedStudentId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
         $requestedStudentId= $sqlRequestedStudentId->fetch();
+=======
+
+
+    public function getStudentById($inputId)
+    {
+        $sqlRequestedStudentId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
+        $requestedStudentId[]= $sqlRequestedStudentId->fetch();
+>>>>>>> production
         return $requestedStudentId;
     }
 
@@ -90,6 +99,7 @@ class DatabaseLoader
         return $requestedGroupId;
     }
 
+<<<<<<< HEAD
     public function getStudentByCoach($inputId)
     {
         $sqlRequestStudentByCoach=$this->getConnection()->query('SELECT * FROM students WHERE group_id =' .$inputId );
@@ -98,6 +108,31 @@ class DatabaseLoader
             $RequestStudentByCoach[]= new Student ($row[0], $row[1], $row[2], $row[3]);
         }
         return $RequestStudentByCoach;
+=======
+    public function deleteGroup($deleteID):void
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Groups WHERE ID =' .$deleteID);
+
+    }
+
+
+    public function deleteStudent($deleteID):void
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE  FROM Students WHERE ID=' . $deleteID);
+
+    }
+
+
+    public function deleteTeacher($deleteID):void
+    {
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE  FROM Coaches WHERE ID=' . $deleteID);
+
+    }
+
+    public function createNewEntry()
+    {
+
+>>>>>>> production
     }
 
 }
