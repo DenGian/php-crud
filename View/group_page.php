@@ -18,20 +18,16 @@
         $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
         $teacherName = $teacherNames['name'];
 
-
-
-
-
         echo '<tr>'.
             '<td>' . $groupId . '</td>'.
             '<td>' . $groupName . '</td>'.
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
-            '<td><button value="'.$groupId .'"name="Delete">Delete</button></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="Delete">Delete</button></form></td>'.
                 '</tr>';
-
-
+        
     }
     ?>
 </table>
+
 <?php require 'includes/footer.php'?>
