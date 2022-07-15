@@ -1,5 +1,6 @@
 <?php
-declare(strict_types = 1);
+
+declare(strict_types=1);
 
 class InfoController
 {
@@ -10,6 +11,10 @@ class InfoController
         // then the view will actually display them.
 
         //load the view
-        require 'View/info.php';
+        if (isset($GET['student'])) {
+            $studentID = $GET['student'];
+            echo $studentID;
+            require 'View/info.php';
+        }
     }
 }
