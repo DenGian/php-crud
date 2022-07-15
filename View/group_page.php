@@ -28,5 +28,7 @@
     }
     ?>
 </table>
-
+<form method="post">
+    <button value = "create" name =" create new">Create new entry</button>
+</form>
 <?php require 'includes/footer.php'?>
