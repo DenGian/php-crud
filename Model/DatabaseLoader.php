@@ -72,7 +72,7 @@ class DatabaseLoader
     public function getTeacherById($inputId)
     {
         $sqlRequestedTeacherId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
-        $requestedTeacherId[]= $sqlRequestedTeacherId->fetch();
+        $requestedTeacherId= $sqlRequestedTeacherId->fetch();
         return $requestedTeacherId;
         }
 
@@ -91,7 +91,7 @@ class DatabaseLoader
     public function getGroupById($inputId)
     {
         $sqlRequestGroupId=$this->getConnection()->query('SELECT * FROM Groups WHERE ID =' .$inputId);
-        $requestedGroupId[]=$sqlRequestGroupId->fetch();
+        $requestedGroupId=$sqlRequestGroupId->fetch();
         return $requestedGroupId;
     }
 
