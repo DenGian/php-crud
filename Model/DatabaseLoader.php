@@ -109,10 +109,21 @@ class DatabaseLoader
 
     public function deleteTeacher($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Coaches WHERE ID=' . $deleteID);
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Coaches WHERE ID=' . $deleteID);
     }
 
     public function createNewEntry()
     {
+    }
+    public function updateStudent(int $id, string $newname, string $email, int $groupId)
+    {
+        //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
+        //     $sth = $this->getConnection()->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        //     $sth->execute(array('newname' => $newname, 'email' => $email, 'group_id' => $groupId, 'id' => $id));
+
+        $sql = "UPDATE students SET firstname = :firstname, email = :email , group_id = :group_id WHERE id = :id";
+        $sth = $this->getConnection()->prepare($sql);
+        $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
+        echo $sql;
     }
 }
