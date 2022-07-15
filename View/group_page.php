@@ -8,14 +8,17 @@
         <th>Teacher</th>
     </tr>
     <?php
+
+
     foreach ($groupArray as $group) {
         $groupName = ucfirst($group->getGroupName());
         $groupId = $group->getGroupId();
         $groupLocation = $group->getGroupLocation();
         $groupCoachId = $group->getGroupCoachId();
-        foreach ($coachArray as $coach){
-            $teacherName = ucfirst($coach->getName());
-        }
+        $teacherNames = $this->DBLoader->getTeacherById($groupId);
+        $teacherName = $teacherNames['name'];
+
+
 
 
 
@@ -23,8 +26,8 @@
             '<td>' . $groupId . '</td>'.
             '<td>' . $groupName . '</td>'.
             '<td>' . $groupLocation . '</td>'.
-//            '<td>' . $groupCoachId . '</td>'.
             '<td>' . $teacherName . '</td>'.
+            '<td><button value="'.$groupId .'"name="Delete">Delete</button></td>'.
                 '</tr>';
 
 
