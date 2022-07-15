@@ -13,9 +13,16 @@ class EditStudentPage
         $selectedStudent = $this->dbLoader->getStudentById($GET['student']);
         var_dump($selectedStudent);
         $sStudentId = $selectedStudent[0]['id'];
-        $sStudentName = $selectedStudent[0]['name'];
+        $sStudentName = $selectedStudent[0]['firstname'];
         $sStudentEmail = $selectedStudent[0]['email'];
         $sStudentGroupId = $selectedStudent[0]['group_id'];
+        if (isset($POST['updateStudent'])) {
+            var_dump($POST['newName']);
+            $sStudentName = $_POST['newName'];
+            $sStudentEmail = $_POST['newEmail'];
+            $sStudentGroupId = (int) $_POST['newGroupId'];
+            $this->dbLoader->updateStudent($sStudentId, $sStudentName, $sStudentEmail, $sStudentGroupId);
+        }
         require 'View/editstudentpage.php';
     }
 }
