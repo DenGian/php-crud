@@ -33,6 +33,5 @@
     <button value = "create" name =" create new">Create new entry</button>
 </form>
 
-<?php
-var_dump($POST);
-require 'includes/footer.php'?>
+
+<?php require 'includes/footer.php'?>
