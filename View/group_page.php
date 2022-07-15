@@ -15,7 +15,7 @@
         $groupId = $group->getGroupId();
         $groupLocation = $group->getGroupLocation();
         $groupCoachId = $group->getGroupCoachId();
-        $teacherNames = $this->DBLoader->getTeacherById($groupId);
+        $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
         $teacherName = $teacherNames['name'];
 
 
