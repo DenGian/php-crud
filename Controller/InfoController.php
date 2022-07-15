@@ -15,6 +15,8 @@ class InfoController
             $studentID = $GET['student'];
             echo $studentID;
             require 'View/info.php';
+        } elseif (isset($GET['group'])) {
+            require 'View/groupinfopage.php';
         }
     }
 }
