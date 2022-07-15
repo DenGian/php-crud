@@ -73,12 +73,12 @@ class DatabaseLoader
 
     public function getTeacherById($inputId)
     {
-        $sqlRequestedTeacherId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
-        $requestedTeacherId[]= $sqlRequestedTeacherId->fetch();
+        $sqlRequestedTeacherId=$this->getConnection()->query('SELECT name FROM Coaches WHERE ID =' .$inputId);
+        $requestedTeacherId = $sqlRequestedTeacherId->fetch();
         return $requestedTeacherId;
         }
 
-    public function getAllGroups()
+    public function getAllGroups():array
     {
         $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups');
         $groupArray=[];
