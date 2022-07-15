@@ -17,6 +17,7 @@ class GroupController
         //delete function
         if(isset($POST['delete'])){
             $this->DBLoader->deleteGroup($POST['delete']);
+            header('location:index.php?page='.$GET['page']);
         }
 
         require 'view/group_page.php';
