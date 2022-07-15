@@ -22,7 +22,8 @@ class DatabaseLoader
     public function getConnection():PDO{
         try
         {
-            $this->conn = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpass);
+            $dsn = 'mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname;
+            $this->conn = new PDO( $dsn , $this->dbuser, $this->dbpass);
 
             //uncomment echo to check if connection was established
 //             echo "Connected to $this->dbname at $this->dbhost successfully.";
@@ -38,9 +39,9 @@ class DatabaseLoader
     }
 
 
-    public function getAllStudents()
+    public function getAllStudents($inputId)
     {
-        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS");
+        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS" .$inputId);
         $studentsArray=[];
         while ($row = $sqlAllStudents->fetch()){
             $studentsArray[] = new Student($row[0],$row[1],$row[2],$row[3]);
@@ -48,26 +49,22 @@ class DatabaseLoader
         return $studentsArray;
     }
 
-
-
-    public function getStudentById()
+    public function getStudentById($inputId)
     {
-
+        $sqlRequestedStudentId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
+        $requestedStudentId= $sqlRequestedStudentId->fetch();
+        return $requestedStudentId;
     }
 
-
-
-    public function getAllTeachers()
+    public function getAllTeachers($inputId)
     {
-        $sqlGetAllTeachers=$this->getConnection()->query('SELECT * FROM Coaches');
+        $sqlGetAllTeachers=$this->getConnection()->query('SELECT * FROM Coaches' .$inputId);
         $teacherArray=[];
         while ($row = $sqlGetAllTeachers->fetch()){
             $teacherArray[] = new Teacher($row[0], $row[1], $row[2]);
         }
         return $teacherArray;
     }
-
-
 
     public function getTeacherById($inputId)
     {
@@ -76,9 +73,9 @@ class DatabaseLoader
         return $requestedTeacherId;
         }
 
-    public function getAllGroups()
+    public function getAllGroups($inputId)
     {
-        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups');
+        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups' .$inputId);
         $groupArray=[];
         while ($row = $sqlGetAllGroups->fetch()){
             $groupArray[]= new Group ($row[0], $row[1], $row[2], $row[3]);
@@ -86,13 +83,21 @@ class DatabaseLoader
         return $groupArray;
     }
 
-
-
     public function getGroupById($inputId)
     {
         $sqlRequestGroupId=$this->getConnection()->query('SELECT * FROM Groups WHERE ID =' .$inputId);
         $requestedGroupId=$sqlRequestGroupId->fetch();
         return $requestedGroupId;
+    }
+
+    public function getStudentByCoach($inputId)
+    {
+        $sqlRequestStudentByCoach=$this->getConnection()->query('SELECT * FROM students WHERE group_id =' .$inputId );
+        $RequestStudentByCoach=[];
+        while ($row = $sqlRequestStudentByCoach->fetch()){
+            $RequestStudentByCoach[]= new Student ($row[0], $row[1], $row[2], $row[3]);
+        }
+        return $RequestStudentByCoach;
     }
 
 }
