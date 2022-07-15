@@ -16,13 +16,14 @@
         $groupCoachId = $group->getGroupCoachId();
         $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
         $teacherName = $teacherNames['name'];
+
     //use the loop to create a table on screen having all information aswell as a delete button for each entry
         echo '<tr>'.
             '<td>' . $groupId . '</td>'.
             '<td>' . $groupName . '</td>'.
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
-            '<td><form method ="post"> <button value="'.$groupId .'"name="Delete">Delete</button></form></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
                 '</tr>';
 
     }
@@ -31,4 +32,7 @@
 <form method="post">
     <button value = "create" name =" create new">Create new entry</button>
 </form>
-<?php require 'includes/footer.php'?>
+
+<?php
+var_dump($POST);
+require 'includes/footer.php'?>
