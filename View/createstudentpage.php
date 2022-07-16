@@ -15,4 +15,5 @@
     </select>
     <button style="background-color:lightgreen; border:1px solid lightgreen; color:white; font-weight:bold;" name="submitNewStudent">Create!</button>
 </form>
+<p><?= $succes ?? 'STATUS'; ?></p>
 <?php require 'includes/footer.php' ?>
