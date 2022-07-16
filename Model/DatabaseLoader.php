@@ -112,8 +112,18 @@ class DatabaseLoader
         $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Coaches WHERE ID=' . $deleteID);
     }
 
-    public function createNewEntry()
+    public function createNewStudent($newname, $email, $groupId): string
     {
+        if ($newname !== "" && $email !== "") {
+            $sql = "INSERT INTO students (firstname, email, group_id) VALUES (:firstname, :email , :group_id)";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => (int)$groupId));
+            $succes = 'Create Student Successfully';
+            return $succes;
+        } else {
+            $succes = 'no way José';
+            return $succes;
+        }
     }
     public function updateStudent(int $id, string $newname, string $email, int $groupId)
     {
@@ -124,6 +134,5 @@ class DatabaseLoader
         $sql = "UPDATE students SET firstname = :firstname, email = :email , group_id = :group_id WHERE id = :id";
         $sth = $this->getConnection()->prepare($sql);
         $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
-        echo $sql;
     }
 }
