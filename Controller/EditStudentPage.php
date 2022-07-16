@@ -16,8 +16,8 @@ class EditStudentPage
         $sStudentName = $selectedStudent[0]['firstname'];
         $sStudentEmail = $selectedStudent[0]['email'];
         $sStudentGroupId = $selectedStudent[0]['group_id'];
-        // $groupFetch = $this->dbLoader->getAllGroups();
-        // var_dump($groupFetch);
+        $groupFetch = $this->dbLoader->getAllGroups();
+        var_dump($groupFetch);
         if (isset($POST['updateStudent'])) {
             var_dump($POST['newName']);
             $sStudentName = $_POST['newName'];
