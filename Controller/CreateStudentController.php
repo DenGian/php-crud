@@ -12,6 +12,9 @@ class CreateStudentController
     {
         $groupArray = $this->dbLoader->getAllGroups();
         var_dump($groupArray[0]);
+        if (isset($POST['submitNewStudent'])) {
+            $succes = $this->dbLoader->createNewStudent($POST['name'], $POST['email'], $POST['group']);
+        }
         require 'View/createstudentpage.php';
     }
 }
