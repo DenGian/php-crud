@@ -78,7 +78,7 @@ class DatabaseLoader
 
     public function getAllGroups()
     {
-        $sqlGetAllGroups = $this->getConnection()->query('SELECT * FROM groups');
+        $sqlGetAllGroups = $this->getConnection()->query("SELECT * FROM group_table");
         $groupArray = [];
         while ($row = $sqlGetAllGroups->fetch()) {
             $groupArray[] = new Group($row[0], $row[1], $row[2], $row[3]);
