@@ -13,6 +13,7 @@ require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
 require 'Controller/StudentPageController.php';
 require 'Controller/EditStudentPage.php';
+require 'Controller/CreateStudentController.php';
 #require 'Controller/TeacherController.php';
 #require 'Controller/GroupController.php';
 
@@ -30,6 +31,8 @@ if (isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new GroupController();
 } elseif (isset($_GET['page']) && $_GET['page'] === "editstudentspage") {
     $controller = new EditStudentPage($dbloader);
+} elseif (isset($_GET['page']) && $_GET['page'] === "createStudent") {
+    $controller = new CreateStudentController($dbloader);
 }
 
 
