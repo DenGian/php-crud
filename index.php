@@ -7,7 +7,7 @@ require 'Model/User.php';
 require 'Model/DatabaseLoader.php';
 require 'Model/Teacher.php';
 require 'Model/Student.php';
-#require 'Model/Group.php';
+require 'Model/Group.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/InfoController.php';
