@@ -2,7 +2,9 @@
 <p><a href="index.php">homepage</a></p>
 <h1>hallo wereldje</h1>
 <h2>students</h2>
+
 <form method="post">
+   <button style="border-color:green; background-color:green;" name="createNewStudent"><a style="text-decoration:none; color:white;" href="index.php?page=createStudent">Create New Student</a></button>
    <table style="border:1px solid black;">
       <tr>
          <th>ID</th>
