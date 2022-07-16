@@ -1,5 +1,6 @@
 <?php require 'includes/header.php' ?>
-<a href="index.php">hompage</a>
+<a style="color: red; font-weight: bold; text-decoration:none; border:1px solid red;" href="index.php">Hompage</a>
+<a style="color: purple; font-weight: bold; text-decoration:none; border:1px solid purple;" href="index.php?page=student">Student Page</a>
 <h1>hello world</h1>
 <?= $GET['student'] ?>
 <form method="POST">

@@ -1,8 +1,7 @@
 <?php require 'View/includes/header.php'; ?>
-<p><a href="index.php">homepage</a></p>
-<h1>hallo wereldje</h1>
-<h2>students</h2>
-
+<p><a style="color: red; font-weight: bold; text-decoration:none; border:1px solid red;" href="index.php">homepage</a></p>
+<h1 style="color:purple">STUDENTS</h1>
+<p>click the students' name to go to the edit page if you want to edit the data.</p>
 <form method="post">
    <button style="border-color:green; background-color:green;" name="createNewStudent"><a style="text-decoration:none; color:white;" href="index.php?page=createStudent">Create New Student</a></button>
    <table style="border:1px solid black;">
@@ -15,14 +14,14 @@
          <tr>
             <td><?= $student->getID(); ?></td>
             <td>
-               <a href=<?php echo "index.php?page=info&student=" . $student->getId(); ?>><?= $student->getName() ?></a>
+               <a style="text-decoration:none; color:blue; font-weight: bold; border:1px solid blue" href=<?php echo "index.php?page=info&student=" . $student->getId(); ?>><?= $student->getName() ?></a>
             </td>
             <td>
                <?= $student->getEmail(); ?>
             </td>
             <td>
-               <button style="background-color:orange;color:white;border-color:orange;">
-                  <a href="index.php?page=editstudentspage&student=<?= $student->getId() ?>">edit</a>
+               <button style="background-color:orange; border-color:orange;">
+                  <a style="color:white; text-decoration:none; font-weight:bold" href="index.php?page=editstudentspage&student=<?= $student->getId() ?>">edit</a>
                </button>
             </td>
             <td>

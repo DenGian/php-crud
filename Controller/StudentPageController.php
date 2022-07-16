@@ -17,7 +17,7 @@ class StudentPageController
             $lalaArray[] = new Student($row[0], $row[1], $row[2], $row[3]);
         }
 
-        var_dump($lalaArray);
+        #var_dump($lalaArray);
         if (isset($POST['deleteStudent'])) {
             $this->dbLoader->deleteStudent($POST['deleteStudent']);
         }
