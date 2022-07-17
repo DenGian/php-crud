@@ -11,7 +11,7 @@ class CreateStudentController
     public function render(array $GET, array $POST)
     {
         $groupArray = $this->dbLoader->getAllGroups();
-        var_dump($groupArray[0]);
+        //var_dump($groupArray[0]);
         if (isset($POST['submitNewStudent'])) {
             $succes = $this->dbLoader->createNewStudent($POST['name'], $POST['email'], $POST['group']);
         }
