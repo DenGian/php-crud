@@ -3,7 +3,7 @@
 <h1 style="color:purple">STUDENTS</h1>
 <p>click the students' name to go to the edit page if you want to edit the data.</p>
 <form method="post">
-   <button style="border-color:green; background-color:green;font-size:30px;padding:0;padding-inline:2em;" name="createNewStudent"><a style="text-decoration:none; color:white;" href="index.php?page=createStudent">+</a></button>
+   <button style="border-color:green; background-color:green;font-size:30px;padding:0;" name="createNewStudent"><a style="text-decoration:none; color:white;padding:1em" href="index.php?page=createStudent">+</a></button>
    <table style="border:1px solid black;">
       <tr>
          <th>ID</th>
