@@ -23,7 +23,8 @@ class InfoController
             $student = new Student($studentFetch[0]['id'], $studentFetch[0]['firstname'], $studentFetch[0]['email'], $studentFetch[0]['group_id']);
             $groupFetch = $this->dbLoader->getGroupById($student->getGroupId());
             $groupName = $groupFetch[0]['group_name'];
-            //var_dump($groupFetch);
+            $coachFetch = $this->dbLoader->getTeacherById($groupFetch[0]['coach_id']);
+            //var_dump($coachFetch);
             require 'View/studentinfo.php';
         } elseif (isset($GET['teacher'])) { //ian
             require 'View/teacherinfo.php';
