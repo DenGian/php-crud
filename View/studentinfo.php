@@ -6,6 +6,6 @@
     <h2><?= $student->getName() ?? 'student'; ?></h2>
     <h2>STUDENT ID: <?= $student->getId(); ?></h2>
     <h2>EMAIL: <?= $student->getEmail(); ?></h2>
-    <h2>GROUP ID: <?= $student->getGroupId(); ?></h2>
+    <h2>GROUP: <?= $groupName; ?></h2>
 </section>
 <?php require 'includes/footer.php' ?>
