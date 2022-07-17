@@ -22,7 +22,7 @@ require 'Controller/CreateStudentController.php';
 $dbloader = new DatabaseLoader();
 $controller = new HomepageController();
 if (isset($_GET['page']) && $_GET['page'] === 'info') {
-    $controller = new InfoController();
+    $controller = new InfoController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === 'student') {
     $controller = new StudentPageController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === 'coach') {
