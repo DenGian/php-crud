@@ -90,7 +90,7 @@ class DatabaseLoader
 
     public function getGroupById($inputId)
     {
-        $sqlRequestGroupId = $this->getConnection()->query('SELECT * FROM Groups WHERE ID =' . $inputId);
+        $sqlRequestGroupId = $this->getConnection()->query('SELECT * FROM group_table WHERE ID =' . $inputId);
         $requestedGroupId[] = $sqlRequestGroupId->fetch();
         return $requestedGroupId;
     }
