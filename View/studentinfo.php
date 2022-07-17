@@ -7,5 +7,8 @@
     <h2>STUDENT ID: <?= $student->getId(); ?></h2>
     <h2>EMAIL: <?= $student->getEmail(); ?></h2>
     <h2>GROUP: <?= $groupName; ?></h2>
+    <h3>Assinged Coach</h3>
+    <h3>Coach Name: <?= $coachFetch[0]['name'] ?></h3>
+    <h3>Coach Email: <?= $coachFetch[0]['email'] ?></h3>
 </section>
 <?php require 'includes/footer.php' ?>
