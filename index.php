@@ -15,10 +15,12 @@ require 'Controller/InfoController.php';
 require 'Controller/StudentPageController.php';
 require 'Controller/EditStudentPage.php';
 require 'Controller/CreateStudentController.php';
-#require 'Controller/TeacherController.php';
+require 'Controller/TeacherController.php';
+require 'Controller/CreateTeacherController.php';
+require 'Controller/EditTeacherPage.php';
 require 'Controller/GroupController.php';
 require 'Controller/EditGroupPage.php';
-require 'Controller/CreateGroupController.php';
+
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
 //this file should never be more than 20 lines of code!
@@ -31,8 +33,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'info') {
 } elseif (isset($_GET['page']) && $_GET['page'] === 'student') {
     $controller = new StudentPageController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === 'coach') {
-    $controller = new TeacherController();
-
+    $controller = new TeacherController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === 'groups') {
     $controller = new GroupController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === "editstudentspage") {
@@ -43,6 +44,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new EditGroupPage($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === "createGroup") {
     $controller = new CreateGroupController($dbloader);
+} elseif (isset($_GET['page']) && $_GET['page'] === "createteacher") {
+    $controller = new CreateTeacherController($dbloader);
+} elseif (isset($_GET['page']) && $_GET['page'] === "editteacherpage") {
+    $controller = new EditTeacherPage($dbloader);
 }
 
 

@@ -22,10 +22,12 @@ class DatabaseLoader
         $this->getConnection();
     }
 
+
     public function getConnection(): PDO
     {
         try {
-            $this->conn = new PDO('mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname, $this->dbuser, $this->dbpass);
+            $dsn = 'mysql:host=' . $this->dbhost . ';dbname=' . $this->dbname;
+            $this->conn = new PDO($dsn, $this->dbuser, $this->dbpass);
 
             //uncomment echo to check if connection was established
             //             echo "Connected to $this->dbname at $this->dbhost successfully.";
@@ -37,16 +39,15 @@ class DatabaseLoader
     }
 
 
-    public function getAllStudents()
+    public function getAllStudents($inputId)
     {
-        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS");
+        $sqlAllStudents = $this->getConnection()->query("SElECT * FROM STUDENTS" . $inputId);
         $studentsArray = [];
         while ($row = $sqlAllStudents->fetch()) {
             $studentsArray[] = new Student($row[0], $row[1], $row[2], $row[3]);
         }
         return $studentsArray;
     }
-
 
     public function getStudentById($inputId)
     {
@@ -55,7 +56,6 @@ class DatabaseLoader
 
         return $requestedStudentId;
     }
-
 
     public function getAllTeachers()
     {
@@ -67,7 +67,6 @@ class DatabaseLoader
         return $teacherArray;
     }
 
-
     public function getTeacherById($inputId)
     {
         $sqlRequestedTeacherId = $this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' . $inputId);
@@ -76,7 +75,7 @@ class DatabaseLoader
         return $requestedTeacherId;
     }
 
-    public function getAllGroups(): array
+    public function getAllGroups()
     {
 
         $sqlGetAllGroups = $this->getConnection()->query("SELECT * FROM group_table");
@@ -88,21 +87,28 @@ class DatabaseLoader
         return $groupArray;
     }
 
-
     public function getGroupById($inputId)
     {
-        $sqlRequestGroupId = $this->getConnection()->query('SELECT * FROM group_table WHERE ID =' . $inputId);
-        $requestedGroupId[] = $sqlRequestGroupId->fetch();
+        $sqlRequestGroupId = $this->getConnection()->query('SELECT * FROM Group_table WHERE ID =' . $inputId);
+        $requestedGroupId = $sqlRequestGroupId->fetch();
         return $requestedGroupId;
+    }
+
+
+    public function getStudentByCoach($inputId)
+    {
+        $sqlRequestStudentByCoach = $this->getConnection()->query('SELECT * FROM STUDENTS');
+        $RequestStudentByCoach = [];
+        while ($row = $sqlRequestStudentByCoach->fetch()) {
+            $RequestStudentByCoach[] = new Student ($row[0], $row[1], $row[2], $row[3]);
+        }
+        return $RequestStudentByCoach;
     }
 
     public function deleteGroup($deleteID): void
     {
-
         $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM group_table WHERE ID =' . $deleteID);
-
     }
-
 
     public function deleteStudent($deleteID): void
     {
@@ -158,25 +164,53 @@ class DatabaseLoader
         }
     }
 
-    public function updateGroup(int $id, string $newGroupName, string $newCoachId, string $newLocation)
+
+    function createNewTeacher($newname, $email): string
     {
-        if ($newGroupName !== "" && $newLocation !== "" && $newCoachId !==""){
-            $sql = "UPDATE group_table SET group_name = :group_name, coach_id = :coach_id , group_location = :group_location WHERE id = :id";
+        if ($newname !== "" && $email !== "") {
+            $sql = "INSERT INTO coaches (coach_name, email) VALUES (:coach_name, :email)";
             $sth = $this->getConnection()->prepare($sql);
-            $sth->execute(array(':group_name' => $newGroupName, ':coach_id' => (int)$newCoachId, ':group_location' => $newLocation, ':id' => $id));
-            $succes = 'Group successfully updated';
+            $sth->execute(array(':coach_name' => $newname, ':email' => $email));
+            $succes = 'Create Coach Successfully';
             return $succes;
-        }else {
+        } else {
             $succes = 'no way José';
             return $succes;
         }
     }
 
-    public function getAssignedStudentsByGroup($inputId)
+    public
+    function updateGroup(int $id, string $newGroupName, string $newCoachId, string $newLocation)
+    {
+        if ($newGroupName !== "" && $newLocation !== "" && $newCoachId !== "") {
+            $sql = "UPDATE group_table SET group_name = :group_name, coach_id = :coach_id , group_location = :group_location WHERE id = :id";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':group_name' => $newGroupName, ':coach_id' => (int)$newCoachId, ':group_location' => $newLocation, ':id' => $id));
+            $succes = 'Group successfully updated';
+            return $succes;
+        } else {
+            $succes = 'no way José';
+            return $succes;
+        }
+    }
+
+    public
+    function getAssignedStudentsByGroup($inputId)
     {
         $sqlAssignedStudents = $this->getConnection()->query('select firstname from students where group_id =' . $inputId);
         $requestedstudents[] = $sqlAssignedStudents->fetch();
 //        var_dump($requestedstudents);
         return $requestedstudents;
+    }
+
+    function updateTeacher(int $id, string $newname, string $email)
+    {
+        //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
+        //     $sth = $this->getConnection()->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        //     $sth->execute(array('newname' => $newname, 'email' => $email, 'group_id' => $groupId, 'id' => $id));
+
+        $sql = "UPDATE coaches SET coach_name = :coach_name, email = :email WHERE id = :id";
+        $sth = $this->getConnection()->prepare($sql);
+        $sth->execute(array(':coach_name' => $newname, ':email' => $email, ':id' => $id));
     }
 }

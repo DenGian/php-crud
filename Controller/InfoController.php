@@ -31,8 +31,8 @@ class InfoController
         } elseif (isset($GET['group'])) { // if they go to group page
             $groupID = $GET['group'];
             $groupFetch = $this->dbLoader->getgroupById($groupID);
-            //var_dump($studentFetch[0]);
-            $group = new group($groupFetch[0]['id'], $groupFetch[0]['group_name'], $groupFetch[0]['coach_id'], $groupFetch[0]['group_location']);
+            //var_dump($groupFetch);
+            $group = new group($groupFetch['id'], $groupFetch['group_name'], $groupFetch['coach_id'], $groupFetch['group_location']);
             $teacherFetch = $this->dbLoader->getTeacherById($group->getGroupCoachId());
             $teacherName = $teacherFetch[0]['coach_name'];
             $students = $this->dbLoader->getAssignedStudentsByGroup($groupID);
