@@ -24,7 +24,7 @@
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
-            '<td><form method ="post"> <button value="'.$groupId .'"name="editgroup">Edit</button></form></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="editgroup" style="padding: 0">  <a style="color:white; padding=1em;text-decoration:none; font-weight:bold" href="index.php?page=editgroupspage&group='.$groupId .'">Edit</button></form></td>'.
                 '</tr>';
 
     }
