@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 // Looking for .env at the root directory
 class DatabaseLoader
@@ -9,8 +10,9 @@ class DatabaseLoader
     private string $dbpass;
     private PDO $conn;
 
-    public function __construct(){
-        $dotenv = Dotenv\Dotenv::createImmutable((dirname(__DIR__,1)), ".env");
+    public function __construct()
+    {
+        $dotenv = Dotenv\Dotenv::createImmutable((dirname(__DIR__, 1)), ".env");
         $dotenv->load();
         $this->dbhost = $_ENV['DATABASE_HOST'];
         $this->dbname = $_ENV['DATABASE_NAME'];
@@ -19,6 +21,7 @@ class DatabaseLoader
         $this->getConnection();
     }
 
+
     public function getConnection():PDO{
         try
         {
@@ -26,14 +29,10 @@ class DatabaseLoader
             $this->conn = new PDO( $dsn , $this->dbuser, $this->dbpass);
 
             //uncomment echo to check if connection was established
-//             echo "Connected to $this->dbname at $this->dbhost successfully.";
+            //             echo "Connected to $this->dbname at $this->dbhost successfully.";
 
-                return $this->conn;
-
-        }
-
-        catch
-        (PDOException $pe) {
+            return $this->conn;
+        } catch (PDOException $pe) {
             die("Could not connect to the database $this->dbname :" . $pe->getMessage());
         }
     }
@@ -51,17 +50,16 @@ class DatabaseLoader
 
     public function getStudentById($inputId)
     {
-        $sqlRequestedStudentId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
-        $requestedStudentId[]= $sqlRequestedStudentId->fetch();
-
+        $sqlRequestedStudentId = $this->getConnection()->query('SELECT * FROM students WHERE ID =' . $inputId);
+        $requestedStudentId[] = $sqlRequestedStudentId->fetch();
         return $requestedStudentId;
     }
 
     public function getAllTeachers($inputId)
     {
-        $sqlGetAllTeachers=$this->getConnection()->query('SELECT * FROM Coaches' .$inputId);
-        $teacherArray=[];
-        while ($row = $sqlGetAllTeachers->fetch()){
+        $sqlGetAllTeachers = $this->getConnection()->query('SELECT * FROM Coaches');
+        $teacherArray = [];
+        while ($row = $sqlGetAllTeachers->fetch()) {
             $teacherArray[] = new Teacher($row[0], $row[1], $row[2]);
         }
         return $teacherArray;
@@ -69,17 +67,17 @@ class DatabaseLoader
 
     public function getTeacherById($inputId)
     {
-        $sqlRequestedTeacherId=$this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' .$inputId);
-        $requestedTeacherId= $sqlRequestedTeacherId->fetch();
+        $sqlRequestedTeacherId = $this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' . $inputId);
+        $requestedTeacherId[] = $sqlRequestedTeacherId->fetch();
         return $requestedTeacherId;
-        }
+    }
 
     public function getAllGroups($inputId)
     {
-        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups' .$inputId);
-        $groupArray=[];
-        while ($row = $sqlGetAllGroups->fetch()){
-            $groupArray[]= new Group ($row[0], $row[1], $row[2], $row[3]);
+        $sqlGetAllGroups = $this->getConnection()->query("SELECT * FROM group_table");
+        $groupArray = [];
+        while ($row = $sqlGetAllGroups->fetch()) {
+            $groupArray[] = new Group($row[0], $row[1], $row[2], $row[3]);
         }
         return $groupArray;
     }
@@ -101,30 +99,44 @@ class DatabaseLoader
         }
         return $RequestStudentByCoach;
     }
-    public function deleteGroup($deleteID):void
+    public function deleteGroup($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Groups WHERE ID =' .$deleteID);
-
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM group_table WHERE ID =' . $deleteID);
     }
 
 
-    public function deleteStudent($deleteID):void
+    public function deleteStudent($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE  FROM Students WHERE ID=' . $deleteID);
-
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Students WHERE ID=' . $deleteID);
     }
 
 
-    public function deleteTeacher($deleteID):void
+    public function deleteTeacher($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE  FROM Coaches WHERE ID=' . $deleteID);
-
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Coaches WHERE ID=' . $deleteID);
     }
 
-    public function createNewEntry()
+    public function createNewStudent($newname, $email, $groupId): string
     {
-
-
+        if ($newname !== "" && $email !== "") {
+            $sql = "INSERT INTO students (firstname, email, group_id) VALUES (:firstname, :email , :group_id)";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => (int)$groupId));
+            $succes = 'Create Student Successfully';
+            return $succes;
+        } else {
+            $succes = 'no way José';
+            return $succes;
+        }
     }
+    public function updateStudent(int $id, string $newname, string $email, int $groupId)
+    {
+        //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
+        //     $sth = $this->getConnection()->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        //     $sth->execute(array('newname' => $newname, 'email' => $email, 'group_id' => $groupId, 'id' => $id));
 
+        $sql = "UPDATE students SET firstname = :firstname, email = :email , group_id = :group_id WHERE id = :id";
+        $sth = $this->getConnection()->prepare($sql);
+        $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
+    }
 }

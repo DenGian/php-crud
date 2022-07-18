@@ -1,0 +1,14 @@
+<?php require 'includes/header.php' ?>
+<section>
+    <a style="color:red; font-weight:bold; text-decoration:none;border:1px solid red;" href="index.php">Back to homepage</a>
+    <a style="color:purple; font-weight:bold; text-decoration:none;border:1px solid purple;" href="index.php?page=student">Student Page</a>
+    <h1 style="color:pink;">Student Info Page</h1>
+    <h2><?= $student->getName() ?? 'student'; ?></h2>
+    <h2>STUDENT ID: <?= $student->getId(); ?></h2>
+    <h2>EMAIL: <?= $student->getEmail(); ?></h2>
+    <h2>GROUP: <?= $groupName; ?></h2>
+    <h3>Assinged Coach</h3>
+    <h3>Coach Name: <?= $coachFetch[0]['name'] ?></h3>
+    <h3>Coach Email: <?= $coachFetch[0]['email'] ?></h3>
+</section>
+<?php require 'includes/footer.php' ?>

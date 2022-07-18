@@ -8,7 +8,6 @@ class Student extends Teacher{
     public function __construct(int $id, string $name, string $email, ?int $group_id){
         parent::__construct($id, $name, $email);
         $this->group_id = $group_id;
-
     }
 
     // public function getId(): int {
@@ -20,7 +19,8 @@ class Student extends Teacher{
     // public function getEmail(): string {
     //     return $this->email;
     //     }
-    public function getGroupId(): int {
+    public function getGroupId(): int
+    {
         return $this->group_id;
-        }
+    }
 }

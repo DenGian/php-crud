@@ -1,15 +1,14 @@
-<?php require 'includes/header.php'?>
+<?php require 'includes/header.php' ?>
 <!-- this is the view, try to put only simple if's and loops here.
 Anything complex should be calculated in the model -->
 <section>
-    <h4>Hello <?php echo $user->getName()?>,</h4>
+    <h4>Hello <?php echo $user->getName() ?>,</h4>
 
-    <p><a href="index.php?page=info">To info page</a></p>
-    <p><a href="index.php?page=student">student page</a></p>
-    <p><a href="index.php?page=coach">coach page</a></p>
-    <p><a href="index.php?page=groups">groups page</a></p>
-
+    <p><a style="color: purple; font-weight: bold; text-decoration:none; border:1px solid purple;" href="index.php?page=student">student page</a></p>
+    <p><a style="color: cyan; font-weight: bold; text-decoration:none; border:1px solid cyan;" href="index.php?page=coach">coach page</a></p>
+    <p><a style="color: brown; font-weight: bold; text-decoration:none; border:1px solid brown;" href="index.php?page=groups">groups page</a></p>
+    <p><a style="color: green; font-weight: bold; text-decoration:none; border:1px solid green;" href="index.php?page=createStudent">Create Student Page</a></p>
 
     <p>Put your content here.</p>
 </section>
-<?php require 'includes/footer.php'?>
+<?php require 'includes/footer.php' ?>

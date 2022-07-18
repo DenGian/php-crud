@@ -113,3 +113,5 @@ vendor
 .env
 
 composer.lock
+
+.vscode
