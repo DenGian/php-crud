@@ -23,6 +23,3 @@
     </form>
 <p><?= $succes ?? 'STATUS'; ?></p>
 <?php require 'includes/footer.php' ?>
-
-<!--newGroupCoachId-->
-<!--    placeholder="--><?//= $selectedGroupCoachId ?? "Coach ID" ?>
