@@ -97,7 +97,7 @@ class DatabaseLoader
 
     public function deleteGroup($deleteID): void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE * FROM Groups WHERE ID=' . $deleteID);
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM group_table WHERE ID =' . $deleteID);
     }
 
 
