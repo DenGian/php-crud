@@ -171,4 +171,12 @@ class DatabaseLoader
             return $succes;
         }
     }
+
+    public function getAssignedStudentsByGroup($inputId)
+    {
+        $sqlAssignedStudents = $this->getConnection()->query('select firstname from students where group_id =' . $inputId);
+        $requestedstudents[] = $sqlAssignedStudents->fetch();
+//        var_dump($requestedstudents);
+        return $requestedstudents;
+    }
 }
