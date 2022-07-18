@@ -10,10 +10,9 @@ class CreateTeacherController
     }
     public function render(array $GET, array $POST)
     {
-        $coachArray = $this->dbLoader->getAllGroups();
         //var_dump($groupArray[0]);
-        if (isset($POST['submitNewCoach'])) {
-            $succes = $this->dbLoader->createNewCoach($POST['coach_name'], $POST['email']);
+        if (isset($POST['submitNewTeacher'])) {
+            $succes = $this->dbLoader->createNewTeacher($POST['coach_name'], $POST['email']);
         }
         require 'View/createteacherpage.php';
     }
