@@ -17,7 +17,7 @@
         $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
         $teacherName = $teacherNames['name'];
 
-    //use the loop to create a table on screen having all information aswell as a delete button for each entry
+    //use the loop to create a table on screen having all information
         echo '<tr>'.
             '<td>' . $groupId . '</td>'.
             '<td>' . $groupName . '</td>'.
@@ -30,6 +30,7 @@
     }
     ?>
 </table>
+<!--adding create new button-->
 <form method="post">
     <button value = "create" name =" create new">Create new entry</button>
 </form>
