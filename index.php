@@ -15,6 +15,8 @@ require 'Controller/StudentPageController.php';
 require 'Controller/EditStudentPage.php';
 require 'Controller/CreateStudentController.php';
 require 'Controller/TeacherController.php';
+require 'Controller/CreateTeacherController.php';
+require 'Controller/EditTeacherPage.php';
 #require 'Controller/GroupController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
@@ -33,6 +35,10 @@ if (isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new EditStudentPage($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === "createStudent") {
     $controller = new CreateStudentController($dbloader);
+} elseif (isset($_GET['page']) && $_GET['page'] === "createteacher") {
+    $controller = new CreateTeacherController($dbloader);
+} elseif (isset($_GET['page']) && $_GET['page'] === "editteacherpage") {
+    $controller = new EditTeacherPage($dbloader);
 }
 
 
