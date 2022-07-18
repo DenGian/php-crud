@@ -28,7 +28,7 @@ class InfoController
             require 'View/studentinfo.php';
         } elseif (isset($GET['teacher'])) { //ian
             require 'View/teacherinfo.php';
-        } elseif (isset($GET['group'])) { //glian
+        } elseif (isset($GET['group'])) { // if they go to group page
             $groupID = $GET['group'];
             $groupFetch = $this->dbLoader->getgroupById($groupID);
             //var_dump($studentFetch[0]);
@@ -36,8 +36,6 @@ class InfoController
             $teacherFetch = $this->dbLoader->getTeacherById($group->getGroupCoachId());
             $teacherName = $teacherFetch[0]['coach_name'];
             $students = $this->dbLoader->getAssignedStudentsByGroup($groupID);
-//            $coachFetch = $this->dbLoader->getTeacherById($groupFetch[0]['coach_id']);
-            //var_dump($coachFetch);
             require 'View/groupinfopage.php';
         }
     }
