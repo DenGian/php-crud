@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 // Looking for .env at the root directory
 class DatabaseLoader
 {
@@ -47,7 +48,6 @@ class DatabaseLoader
     }
 
 
-
     public function getStudentById($inputId)
     {
         $sqlRequestedStudentId = $this->getConnection()->query('SELECT * FROM students WHERE ID =' . $inputId);
@@ -55,7 +55,6 @@ class DatabaseLoader
 
         return $requestedStudentId;
     }
-
 
 
     public function getAllTeachers()
@@ -69,7 +68,6 @@ class DatabaseLoader
     }
 
 
-
     public function getTeacherById($inputId)
     {
         $sqlRequestedTeacherId = $this->getConnection()->query('SELECT * FROM Coaches WHERE ID =' . $inputId);
@@ -78,7 +76,7 @@ class DatabaseLoader
         return $requestedTeacherId;
     }
 
-    public function getAllGroups():array
+    public function getAllGroups(): array
     {
 
         $sqlGetAllGroups = $this->getConnection()->query("SELECT * FROM group_table");
@@ -89,7 +87,6 @@ class DatabaseLoader
         }
         return $groupArray;
     }
-
 
 
     public function getGroupById($inputId)
@@ -135,6 +132,7 @@ class DatabaseLoader
             return $succes;
         }
     }
+
     public function updateStudent(int $id, string $newname, string $email, int $groupId)
     {
         //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
@@ -160,10 +158,17 @@ class DatabaseLoader
         }
     }
 
-    public function updateGroup(int $id, string $newGroupName, int $newCoachId, string $newLocation)
+    public function updateGroup(int $id, string $newGroupName, string $newCoachId, string $newLocation)
     {
-        $sql = "UPDATE group_table SET group_name = :group_name, coach_id = :coach_id , group_location = :group_location WHERE id = :id";
-        $sth = $this->getConnection()->prepare($sql);
-        $sth->execute(array(':group_name' => $newGroupName, ':coahc_id' => $newCoachId, ':group_location' => $newLocation, ':id' => $id));
+        if ($newGroupName !== "" && $newLocation !== "" && $newCoachId !==""){
+            $sql = "UPDATE group_table SET group_name = :group_name, coach_id = :coach_id , group_location = :group_location WHERE id = :id";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':group_name' => $newGroupName, ':coach_id' => (int)$newCoachId, ':group_location' => $newLocation, ':id' => $id));
+            $succes = 'Group successfully updated';
+            return $succes;
+        }else {
+            $succes = 'no way José';
+            return $succes;
+        }
     }
 }
