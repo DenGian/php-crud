@@ -17,7 +17,7 @@ require 'Controller/EditStudentPage.php';
 require 'Controller/CreateStudentController.php';
 #require 'Controller/TeacherController.php';
 require 'Controller/GroupController.php';
-//require 'Controller/EditGroupPage.php';
+require 'Controller/EditGroupPage.php';
 require 'Controller/CreateGroupController.php';
 
 //you could write a simple IF here based on some $_GET or $_POST vars, to choose your controller
