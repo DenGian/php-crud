@@ -8,6 +8,7 @@ Anything complex should be calculated in the model -->
     <p><a style="color: cyan; font-weight: bold; text-decoration:none; border:1px solid cyan;" href="index.php?page=coach">coach page</a></p>
     <p><a style="color: brown; font-weight: bold; text-decoration:none; border:1px solid brown;" href="index.php?page=groups">groups page</a></p>
     <p><a style="color: green; font-weight: bold; text-decoration:none; border:1px solid green;" href="index.php?page=createStudent">Create Student Page</a></p>
+    <p><a style="color: green; font-weight: bold; text-decoration:none; border:1px solid green;" href="index.php?page=createGroup">Create Group Page</a></p>
 
     <p>Put your content here.</p>
 </section>
