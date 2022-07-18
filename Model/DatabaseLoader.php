@@ -80,7 +80,7 @@ class DatabaseLoader
 
     public function getAllGroups():array
     {
-        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM Groups');
+        $sqlGetAllGroups=$this->getConnection()->query('SELECT * FROM group_table');
         $groupArray=[];
         while ($row = $sqlGetAllGroups->fetch()){
             $groupArray[]= new Group ($row[0], $row[1], $row[2], $row[3]);
@@ -92,14 +92,14 @@ class DatabaseLoader
 
     public function getGroupById($inputId)
     {
-        $sqlRequestGroupId=$this->getConnection()->query('SELECT * FROM Groups WHERE ID =' .$inputId);
+        $sqlRequestGroupId=$this->getConnection()->query('SELECT * FROM group_table WHERE ID =' .$inputId);
         $requestedGroupId=$sqlRequestGroupId->fetch();
         return $requestedGroupId;
     }
 
     public function deleteGroup($deleteID):void
     {
-        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM Groups WHERE ID =' .$deleteID);
+        $sqlDeleteEntry = $this->getConnection()->query('DELETE FROM group_table WHERE ID =' .$deleteID);
 
     }
 
