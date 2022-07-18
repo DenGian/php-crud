@@ -29,6 +29,14 @@ class InfoController
         } elseif (isset($GET['teacher'])) { //ian
             require 'View/teacherinfo.php';
         } elseif (isset($GET['group'])) { //glian
+            $groupID = $GET['group'];
+            $groupFetch = $this->dbLoader->getgroupById($groupID);
+            //var_dump($studentFetch[0]);
+            $group = new group($groupFetch[0]['id'], $groupFetch[0]['group_name'], $groupFetch[0]['coach_id'], $groupFetch[0]['group_location']);
+            $teacherFetch = $this->dbLoader->getTeacherById($group->getGroupCoachId());
+            $teacherName = $teacherFetch[0]['coach_name'];
+//            $coachFetch = $this->dbLoader->getTeacherById($groupFetch[0]['coach_id']);
+            //var_dump($coachFetch);
             require 'View/groupinfopage.php';
         }
     }
