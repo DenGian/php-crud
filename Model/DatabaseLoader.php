@@ -56,7 +56,7 @@ class DatabaseLoader
         return $requestedStudentId;
     }
 
-    public function getAllTeachers($inputId)
+    public function getAllTeachers()
     {
         $sqlGetAllTeachers = $this->getConnection()->query('SELECT * FROM Coaches');
         $teacherArray = [];
@@ -142,31 +142,31 @@ class DatabaseLoader
         $sth = $this->getConnection()->prepare($sql);
         $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
     }
-}
 
 
-function createNewCoach($newname, $email, $groupId): string
-{
-    if ($newname !== "" && $email !== "") {
-        $sql = "INSERT INTO coaches (coach_name, email) VALUES (:coach_name, :email)";
-        $sth = $this->getConnection()->prepare($sql);
-        $sth->execute(array(':coach_name' => $newname, ':email' => $email,));
-        $succes = 'Create Coach Successfully';
-        return $succes;
-    } else {
-        $succes = 'no way José';
-        return $succes;
+    function createNewTeacher($newname, $email): string
+    {
+        if ($newname !== "" && $email !== "") {
+            $sql = "INSERT INTO coaches (coach_name, email) VALUES (:coach_name, :email)";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':coach_name' => $newname, ':email' => $email));
+            $succes = 'Create Coach Successfully';
+            return $succes;
+        } else {
+            $succes = 'no way José';
+            return $succes;
+        }
     }
-}
 
 
-function updateStudent(int $id, string $newname, string $email, int $groupId)
-{
-    //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
-    //     $sth = $this->getConnection()->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-    //     $sth->execute(array('newname' => $newname, 'email' => $email, 'group_id' => $groupId, 'id' => $id));
+    function updateTeacher(int $id, string $newname, string $email)
+    {
+        //     $sql = "UPDATE students SET (name,email,group_id) VALUES (':newname' , ':email' , ':groupId') WHERE id = :id";
+        //     $sth = $this->getConnection()->prepare($sql, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+        //     $sth->execute(array('newname' => $newname, 'email' => $email, 'group_id' => $groupId, 'id' => $id));
 
-    $sql = "UPDATE students SET firstname = :firstname, email = :email , group_id = :group_id WHERE id = :id";
-    $sth = $this->getConnection()->prepare($sql);
-    $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
+        $sql = "UPDATE coaches SET coach_name = :coach_name, email = :email WHERE id = :id";
+        $sth = $this->getConnection()->prepare($sql);
+        $sth->execute(array(':coach_name' => $newname, ':email' => $email, ':id' => $id));
+    }
 }
