@@ -15,7 +15,6 @@ class CreateGroupController
     public function render(array $GET, array $POST)
     {
         $groupArray = $this->dbLoader->getAllGroups();
-        //var_dump($groupArray[0]);
         if (isset($POST['submitNewGroup'])) {
             $succes = $this->dbLoader->createNewGroup($POST['Group-name'], $POST['coachId'], $POST['location']);
         }
