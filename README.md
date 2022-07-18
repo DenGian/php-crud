@@ -1,8 +1,5 @@
 # php-crud
 
-<<<<<<< HEAD
-birth of devglenn branch.
-=======
 ---
 
 ### MaTS
@@ -13,4 +10,3 @@ birth of devglenn branch.
 
 ## About
 
->>>>>>> production

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 class group
@@ -9,7 +10,8 @@ class group
     private int $groupCoachId;
 
 
-    public function __construct(int $id,string $name,int $groupCoachId,string $location)
+    public function __construct(int $id, string $name, int $groupCoachId, string $location)
+
     {
         $this->id = $id;
         $this->name = $name;
@@ -24,7 +26,7 @@ class group
         return $this->id;
     }
 
-   
+
     public function getGroupName(): string
     {
         return $this->name;
@@ -43,6 +45,7 @@ class group
     }
 
 
-
-
 }
+
+
+

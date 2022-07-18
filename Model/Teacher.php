@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 class Teacher
@@ -11,9 +12,9 @@ class Teacher
     public function __construct(int $id, string $name, string $email)
 
     {
-        $this->id=$id;
-        $this->name=$name;
-        $this->email=$email;
+        $this->id = $id;
+        $this->name = $name;
+        $this->email = $email;
     }
 
     public function getId(): int
@@ -27,6 +28,6 @@ class Teacher
     }
     public function getEmail(): string
     {
-        return $this->name;
+        return $this->email;
     }
 }
