@@ -1,5 +1,5 @@
 <?php require 'includes/header.php'?>
-
+    <a style="color: red; font-weight: bold; text-decoration:none; border:1px solid red;" href="index.php">Hompage</a>
 <table>
     <tr>
         <th>Group ID</th>
@@ -24,7 +24,7 @@
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
-            '<td><form method ="post"> <button value="'.$groupId .'"name="editgroup" style="padding: 0">  <a style="color:white; padding=1em;text-decoration:none; font-weight:bold" href="index.php?page=editgroupspage&group='.$groupId .'">Edit</button></form></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="editgroup" style="padding: 0">  <a style="color:black; padding=1em;text-decoration:none; font-weight:bold" href="index.php?page=editgroupspage&group='.$groupId .'">Edit</button></form></td>'.
                 '</tr>';
 
     }
@@ -32,7 +32,7 @@
 </table>
 <!--adding create new button-->
 <form method="post">
-    <button value = "createNewGroup" name =" create new"><a style="text-decoration:none; color:white;padding:1em" href="index.php?page=createGroup">Create new entry</button>
+    <button value = "createNewGroup" name =" create new"><a style="text-decoration:none; color:black;padding:1em" href="index.php?page=createGroup">Create new entry</button>
 </form>
 
 
