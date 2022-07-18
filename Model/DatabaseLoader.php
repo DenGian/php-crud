@@ -145,4 +145,25 @@ class DatabaseLoader
         $sth = $this->getConnection()->prepare($sql);
         $sth->execute(array(':firstname' => $newname, ':email' => $email, ':group_id' => $groupId, ':id' => $id));
     }
+
+    public function createNewGroup($newGroupName, $newCoachId, $newLocation): string
+    {
+        if ($newGroupName !== "" && $newLocation !== "") {
+            $sql = "INSERT INTO group_table (group_name, coach_id, group_location) VALUES (:group_name, :coach_id , :group_location)";
+            $sth = $this->getConnection()->prepare($sql);
+            $sth->execute(array(':group_name' => $newGroupName, ':coach_id' => $newCoachId, ':group_location' => $newLocation));
+            $succes = 'Created group Successfully';
+            return $succes;
+        } else {
+            $succes = 'no way José';
+            return $succes;
+        }
+    }
+
+    public function updateGroup(int $id, string $newGroupName, int $newCoachId, string $newLocation)
+    {
+        $sql = "UPDATE group_table SET group_name = :group_name, coach_id = :coach_id , group_location = :group_location WHERE id = :id";
+        $sth = $this->getConnection()->prepare($sql);
+        $sth->execute(array(':group_name' => $newGroupName, ':coahc_id' => $newCoachId, ':group_location' => $newLocation, ':id' => $id));
+    }
 }
