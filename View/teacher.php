@@ -20,7 +20,7 @@
                 '<td>' . $teacherEmail . '</td>' .
                 '<td><form method="post"><button class="btn btn-primary" name="student" value="' . $teacherId . '">Show students</button></form></td>' .
                 //'<td><form method="post"><button class="btn btn-primary" name="student" value="'.$teacherId.'">Show students</button></form></td>' .
-                '<td><form method="post"><button class="btn btn-warning" name="edit" value="' . $teacherId . '">Edit</button></form></td>' .
+                '<td><form method ="post"> <button class="btn btn-warning" value="'.$teacherId .'"name="editteacher" style="padding: 0">  <a style="padding=1em; href="index.php?page=editteacherpage&teacher='.$teacherId .'">Edit</button></form></td>'.
                 '<td><form method="post"><button class="btn btn-danger" name="delete" value="' . $teacherId . '">Delete</button></form></td>' .
                 '</tr>';
         }
@@ -43,6 +43,10 @@
         }
         ?>
     </table>
+
+    <form method="post">
+        <button class="btn btn-success" value = "createNewCoach" name =" create new"><a style="text-decoration:none; color:white; padding:1em" href="index.php?page=createteacher">Create new coach</button>
+    </form>
 
 <?php var_dump($_POST); ?>
 <?php require 'includes/footer.php'; ?>
