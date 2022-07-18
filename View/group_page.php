@@ -15,7 +15,7 @@
         $groupLocation = $group->getGroupLocation();
         $groupCoachId = $group->getGroupCoachId();
         $teacherNames = $this->DBLoader->getTeacherById($groupCoachId);
-        $teacherName = $teacherNames['name'];
+        $teacherName = $teacherNames['coach_name'];
 
     //use the loop to create a table on screen having all information
         echo '<tr>'.
