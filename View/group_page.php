@@ -19,8 +19,8 @@
 
     //use the loop to create a table on screen having all information
         echo '<tr>'.
-            '<td>' . $groupId . '</td>'.
-            '<td>' . $groupName . '</td>'.
+            '<td> ' . $groupId . '</td>'.
+            '<td><a style="text-decoration:none; color:blue; font-weight: bold; border:1px solid blue" href="index.php?page=info&group='. $groupId. '">'.$groupName. '</td>'.
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
