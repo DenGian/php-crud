@@ -32,7 +32,7 @@ if (isset($_GET['page']) && $_GET['page'] === 'info') {
     $controller = new TeacherController();
 
 } elseif (isset($_GET['page']) && $_GET['page'] === 'groups') {
-    $controller = new GroupController();
+    $controller = new GroupController($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === "editstudentspage") {
     $controller = new EditStudentPage($dbloader);
 } elseif (isset($_GET['page']) && $_GET['page'] === "createStudent") {
