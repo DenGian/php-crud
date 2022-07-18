@@ -94,7 +94,7 @@ class DatabaseLoader
 
     public function getStudentByCoach($inputId)
     {
-        $sqlRequestStudentByCoach = $this->getConnection()->query('SELECT * FROM students WHERE group_id =' . $inputId);
+        $sqlRequestStudentByCoach = $this->getConnection()->query('SELECT * FROM STUDENTS');
         $RequestStudentByCoach = [];
         while ($row = $sqlRequestStudentByCoach->fetch()) {
             $RequestStudentByCoach[] = new Student ($row[0], $row[1], $row[2], $row[3]);
