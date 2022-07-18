@@ -24,7 +24,7 @@
             '<td>' . $groupLocation . '</td>'.
             '<td>' . $teacherName . '</td>'.
             '<td><form method ="post"> <button value="'.$groupId .'"name="delete">Delete</button></form></td>'.
-            '<td><form method ="post"> <button value="'.$groupId .'"name="edit">Edit</button></form></td>'.
+            '<td><form method ="post"> <button value="'.$groupId .'"name="editgroup">Edit</button></form></td>'.
                 '</tr>';
 
     }
@@ -32,7 +32,7 @@
 </table>
 <!--adding create new button-->
 <form method="post">
-    <button value = "create" name =" create new">Create new entry</button>
+    <button value = "createNewGroup" name =" create new"><a style="text-decoration:none; color:white;padding:1em" href="index.php?page=createGroup">Create new entry</button>
 </form>
 
 
